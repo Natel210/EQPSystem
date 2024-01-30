@@ -16,10 +16,10 @@
     <ClInclude Include="Core.h">
       <Filter>in\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>in\Log</Filter>
-    </ClInclude>
     <ClInclude Include="ILog.h">
+      <Filter>Out</Filter>
+    </ClInclude>
+    <ClInclude Include="LogBase.h">
       <Filter>Out</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="CoreEntry.cpp">
       <Filter>in\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
+    <ClCompile Include="LogBase.cpp">
       <Filter>in\Log</Filter>
     </ClCompile>
   </ItemGroup>

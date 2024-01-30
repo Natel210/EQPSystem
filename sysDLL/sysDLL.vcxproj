@@ -133,12 +133,12 @@
     <ClInclude Include="ICore.h" />
     <ClInclude Include="ICoreBuilder.h" />
     <ClInclude Include="ILog.h" />
-    <ClInclude Include="Log.h" />
+    <ClInclude Include="LogBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="CoreEntry.cpp" />
-    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="LogBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
