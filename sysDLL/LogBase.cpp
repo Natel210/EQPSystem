@@ -2,8 +2,6 @@
 
 const std::wstring LogBase::Name() const
 {
-    //std::wstring _name;
-    //std::mutex _nameMutex;
     //std::wstring _header;
     //std::mutex _headerMutex;
     //std::vector<std::wstring> _commentList;
@@ -15,16 +13,25 @@ const std::wstring LogBase::Name() const
 
 const bool LogBase::Name(const std::wstring name)
 {
-    return false;
+    std::lock_guard<std::mutex> lock(_nameMutex);
+    if (_name.compare(name) == 0)
+        return false;
+    _name = name;
 }
 
 const eLogLevel LogBase::Level() const
 {
-    return eLogLevel();
+    std::lock_guard<std::mutex> lock(_levelMutex);
+    return _level;
 }
 
 const bool LogBase::Level(const eLogLevel leval)
 {
+    std::lock_guard<std::mutex> lock(_levelMutex);
+    if (_level == level)
+    {
+
+    }
     return false;
 }
 

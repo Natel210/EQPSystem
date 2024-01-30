@@ -36,8 +36,7 @@ public: // Name.
 	/// Set Name.
 	/// </summary>
 	/// <param name="name"> Log name. </param>
-	/// <returns> Success. </returns>
-	virtual const bool Name(const std::wstring name) = 0;
+	virtual void Name(const std::wstring name) = 0;
 
 public: // Level.
 
@@ -51,8 +50,7 @@ public: // Level.
 	/// Set Level.
 	/// </summary>
 	/// <param name="leval"> Level </param>
-	/// <returns> Success. </returns>
-	virtual const bool Level(const eLogLevel leval) = 0;
+	virtual void Level(const eLogLevel leval) = 0;
 
 public: // Header.
 
@@ -60,8 +58,7 @@ public: // Header.
 	/// Set Header.
 	/// </summary>
 	/// <param name="header"> Header. </param>
-	/// <returns> Success. </returns>
-	virtual const bool Header(const std::wstring header) = 0;
+	virtual void Header(const std::wstring header) = 0;
 
 	/// <summary>
 	/// Get Header.

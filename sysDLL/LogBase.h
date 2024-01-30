@@ -82,10 +82,12 @@ public: // Log Text in out.
 
 private: // member
 	std::wstring _name;
-	std::mutex _nameMutex;
+	mutable std::mutex _nameMutex;
+	eLogLevel _level;
+	mutable std::mutex _levelMutex;
 	std::wstring _header;
-	std::mutex _headerMutex;
+	mutable std::mutex _headerMutex;
 	std::vector<std::wstring> _commentList;
-	std::mutex _commentListMutex;
+	mutable std::mutex _commentListMutex;
 };
 
