@@ -44,5 +44,4 @@ std::tm TimeManager::GetCurrentSystemTime()
 
     // 변환된 시간을 tm 구조체로 변환합니다.
     return *std::localtime(&now_c);
-
 }
