@@ -17,10 +17,37 @@
       <Filter>in\Core</Filter>
     </ClInclude>
     <ClInclude Include="ILog.h">
-      <Filter>Out</Filter>
+      <Filter>Out\Log</Filter>
     </ClInclude>
-    <ClInclude Include="LogBase.h">
-      <Filter>Out</Filter>
+    <ClInclude Include="ELogLevel.h">
+      <Filter>Out\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonTemplate.h">
+      <Filter>in\abs</Filter>
+    </ClInclude>
+    <ClInclude Include="IItemManagerBase.h">
+      <Filter>in\InteFace</Filter>
+    </ClInclude>
+    <ClInclude Include="LogMangerSingleton.h">
+      <Filter>in\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>in\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>Out\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>in\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>in\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="IStopWatch.h">
+      <Filter>Out\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="ITimer.h">
+      <Filter>Out\Time</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +66,18 @@
     <Filter Include="in\Log">
       <UniqueIdentifier>{a00a93cc-6013-429c-bdbe-257e6aca4098}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Out\Log">
+      <UniqueIdentifier>{9295065a-d15a-429c-902c-c1e530884c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in\abs">
+      <UniqueIdentifier>{3e85dd23-21af-41fa-b623-39b87071bb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in\Time">
+      <UniqueIdentifier>{36beedd0-ff52-40d3-a408-1e4981f15d7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Out\Time">
+      <UniqueIdentifier>{b5d8b52d-7672-4144-9558-245982fbfa1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -47,8 +86,20 @@
     <ClCompile Include="CoreEntry.cpp">
       <Filter>in\Core</Filter>
     </ClCompile>
-    <ClCompile Include="LogBase.cpp">
+    <ClCompile Include="LogMangerSingleton.cpp">
       <Filter>in\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>in\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>Out\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>in\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>in\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

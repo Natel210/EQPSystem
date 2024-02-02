@@ -2,7 +2,7 @@
 #include <memory>
 #include "CoreEntryDefine.h"
 
-class DLL_API ICoreBuilder : public std::enable_shared_from_this<ICoreBuilder>
+class DLL_API ICoreBuilder
 {
 public:
 	virtual bool Init() = 0;

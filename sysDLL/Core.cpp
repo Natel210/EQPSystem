@@ -1,10 +1,10 @@
 #include "Core.h"
 
-const bool Core::Init(std::weak_ptr<ICoreBuilder> coreBuilder)
+const bool Core::Init(std::shared_ptr<ICoreBuilder> coreBuilder)
 {
-	if (coreBuilder.expired() == true)
+	if (coreBuilder != nullptr)
 	{
-		_coreBuilder = coreBuilder.lock();
+		_coreBuilder = coreBuilder;
 		_isInit = _coreBuilder->Init();
 	}
 	else

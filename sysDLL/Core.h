@@ -10,7 +10,7 @@ private:
 	bool _isRunning = false;
 #pragma region Interface
 public:
-	virtual const bool Init(std::weak_ptr<ICoreBuilder> coreBuilder) final;
+	virtual const bool Init(std::shared_ptr<ICoreBuilder> coreBuilder) final;
 	[[nodiscard]] virtual const bool IsInit() const final;
 	virtual const bool Start() final;
 	virtual const bool End() final;

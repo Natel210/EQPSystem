@@ -1,27 +1,14 @@
 #pragma once
 #include <string>
 #include <vector>
-
-
-/// <summary>
-/// Defines the level of logs.
-/// </summary>
-enum class eLogLevel
-{
-	None,
-	Trace,
-	Debug,
-	Log,
-	Info,
-	Warnning,
-	Error,
-	Fatal,
-};
+#include <memory>
+#include "CoreEntryDefine.h"
+#include "ELogLevel.h"
 
 /// <summary>
 /// Log Interface.
 /// </summary>
-class ILog
+class DLL_API ILog
 {
 
 public: // Name.
@@ -44,21 +31,16 @@ public: // Level.
 	/// Get Level.
 	/// </summary>
 	/// <returns> Level </returns>
-	[[nodiscard]] virtual const eLogLevel Level() const = 0;
+	[[nodiscard]] virtual const ELogLevel Level() const = 0;
 
 	/// <summary>
-	/// Set Level.
+	/// Set Level.<para/>
+	/// Comments already registered will be applied at the previous level.<para/>
 	/// </summary>
 	/// <param name="leval"> Level </param>
-	virtual void Level(const eLogLevel leval) = 0;
+	virtual void Level(const ELogLevel leval) = 0;
 
 public: // Header.
-
-	/// <summary>
-	/// Set Header.
-	/// </summary>
-	/// <param name="header"> Header. </param>
-	virtual void Header(const std::wstring header) = 0;
 
 	/// <summary>
 	/// Get Header.
@@ -66,33 +48,38 @@ public: // Header.
 	/// <returns> Header. </returns>
 	virtual const std::wstring Header() const = 0;
 
+	/// <summary>
+	/// Set Header.<para/>
+	/// Comments already registered will be applied at the previous Header.<para/>
+	/// </summary>
+	/// <param name="header"> Header. </param>
+	virtual void Header(const std::wstring header) = 0;
+
 public: // Log Text in out.
 
 	/// <summary>
 	/// Add additional log.
 	/// </summary>
 	/// <param name="log"> Add Log. </param>
-	/// <returns> Success. </returns>
-	virtual const bool Add(const std::wstring log) = 0;
+	virtual void Add(const std::wstring log) = 0;
 
 	/// <summary>
 	/// Add additional logs.
 	/// </summary>
 	/// <param name="list"> Add LogList. </param>
-	/// <returns> Success. </returns>
-	virtual const bool AddRange(const std::vector<std::wstring> list) = 0;
+	virtual void AddRange(const std::vector<std::wstring> list) = 0;
 
 	/// <summary>
 	/// LogList Getting, don't clear.
 	/// </summary>
 	/// <returns> LogList. </returns>
-	[[nodiscard]] virtual const std::vector<std::wstring> List() const = 0;
+	[[nodiscard]] virtual const std::shared_ptr<const std::vector<std::wstring>> List() const = 0;
 
 	/// <summary>
 	/// LogList Getting, do clear.
 	/// </summary>
 	/// <returns> LogList. </returns>
-	[[nodiscard]] virtual const std::vector<std::wstring>  Return() const = 0;
+	[[nodiscard]] virtual const std::shared_ptr<const std::vector<std::wstring>> Return() = 0;
 
 };
 
