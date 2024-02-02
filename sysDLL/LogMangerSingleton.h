@@ -1,8 +1,8 @@
 #pragma once
-#include <unordered_map>
+#include <mutex>
 #include <string>
 #include <memory>
-#include <mutex>
+#include <unordered_map>
 #include "ILog.h"
 #include "IItemManagerBase.h"
 #include "SingletonTemplate.h"
@@ -18,6 +18,6 @@ public:
 public:
 	static const std::wstring GetELogLeveltoString(const ELogLevel logLevel);
 private:
-	std::unordered_map <std::wstring, std::shared_ptr<ILog>> _logDic;
-	std::mutex _logDicMutex;
+	std::unordered_map <std::wstring, std::shared_ptr<ILog>> _itemDic;
+	std::mutex _itemDicMutex;
 };

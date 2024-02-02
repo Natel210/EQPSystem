@@ -138,6 +138,7 @@
     <ClInclude Include="ICore.h" />
     <ClInclude Include="ICoreBuilder.h" />
     <ClInclude Include="ILog.h" />
+    <ClInclude Include="IObjectClass.h" />
     <ClInclude Include="IStopWatch.h" />
     <ClInclude Include="ITimer.h" />
     <ClInclude Include="Log.h" />
@@ -146,7 +147,10 @@
     <ClInclude Include="IItemManagerBase.h" />
     <ClInclude Include="SingletonTemplate.h" />
     <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="StopWatchMangerSingleton.h" />
+    <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerManagerSingleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
@@ -155,7 +159,10 @@
     <ClCompile Include="LogMangerSingleton.cpp" />
     <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="StopWatchMangerSingleton.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimerManagerSingleton.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

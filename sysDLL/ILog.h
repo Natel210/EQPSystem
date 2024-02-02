@@ -4,12 +4,15 @@
 #include <memory>
 #include "CoreEntryDefine.h"
 #include "ELogLevel.h"
+#include "IObjectClass.h"
 
 /// <summary>
 /// Log Interface.
 /// </summary>
-class DLL_API ILog
+class DLL_API ILog : public IObjectClass
 {
+
+#pragma region interface
 
 public: // Name.
 
@@ -17,13 +20,15 @@ public: // Name.
 	/// Get Name.
 	/// </summary>
 	/// <returns> name </returns>
-	[[nodiscard]] virtual const std::wstring Name() const = 0;
+	[[nodiscard]] virtual const std::wstring Name() const override = 0;
 
 	/// <summary>
 	/// Set Name.
 	/// </summary>
 	/// <param name="name"> Log name. </param>
-	virtual void Name(const std::wstring name) = 0;
+	virtual void Name(const std::wstring name) override = 0;
+
+#pragma endregion
 
 public: // Level.
 

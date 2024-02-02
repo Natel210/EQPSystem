@@ -37,16 +37,28 @@
     <ClInclude Include="LogManager.h">
       <Filter>Out\Log</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>in\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="StopWatch.h">
-      <Filter>in\Time</Filter>
-    </ClInclude>
     <ClInclude Include="IStopWatch.h">
       <Filter>Out\Time</Filter>
     </ClInclude>
     <ClInclude Include="ITimer.h">
+      <Filter>Out\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>in\Time\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerManagerSingleton.h">
+      <Filter>in\Time\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>in\Time\StopWatch</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatchMangerSingleton.h">
+      <Filter>in\Time\StopWatch</Filter>
+    </ClInclude>
+    <ClInclude Include="IObjectClass.h">
+      <Filter>Out</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
       <Filter>Out\Time</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,11 +84,17 @@
     <Filter Include="in\abs">
       <UniqueIdentifier>{3e85dd23-21af-41fa-b623-39b87071bb21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="in\Time">
-      <UniqueIdentifier>{36beedd0-ff52-40d3-a408-1e4981f15d7a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Out\Time">
       <UniqueIdentifier>{b5d8b52d-7672-4144-9558-245982fbfa1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in\Time">
+      <UniqueIdentifier>{3e508054-565d-43cc-9a91-70d1369561a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in\Time\Timer">
+      <UniqueIdentifier>{2b4dc4b0-6952-4d15-ba27-fd755375ddc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in\Time\StopWatch">
+      <UniqueIdentifier>{67af8b6e-642d-4293-8b0e-b6b1ec2eef6d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,10 +114,19 @@
       <Filter>Out\Log</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>in\Time</Filter>
+      <Filter>in\Time\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerManagerSingleton.cpp">
+      <Filter>in\Time\Timer</Filter>
     </ClCompile>
     <ClCompile Include="StopWatch.cpp">
-      <Filter>in\Time</Filter>
+      <Filter>in\Time\StopWatch</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatchMangerSingleton.cpp">
+      <Filter>in\Time\StopWatch</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Out\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
