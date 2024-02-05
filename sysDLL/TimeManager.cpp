@@ -36,13 +36,6 @@ std::shared_ptr<IStopWatch> TimeManager::GetStopWatch(const std::wstring name)
 
 std::tm TimeManager::GetCurrentSystemTime()
 {
-    // 현재 시스템 시간을 얻습니다.
-    auto now = std::chrono::system_clock::now();
-
-    // 시간을 time_t 타입으로 변환합니다.
-    auto now_c = std::chrono::system_clock::to_time_t(now);
-
-    // 변환된 시간을 tm 구조체로 변환합니다.
     struct tm timeinfo;
     time_t rawtime;
     time(&rawtime);

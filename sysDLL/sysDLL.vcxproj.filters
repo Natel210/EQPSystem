@@ -1,32 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="ICoreBuilder.h">
-      <Filter>Out</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreEntryDefine.h">
-      <Filter>Out</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreEntry.h">
-      <Filter>Out</Filter>
-    </ClInclude>
-    <ClInclude Include="ICore.h">
-      <Filter>in\InteFace</Filter>
-    </ClInclude>
     <ClInclude Include="Core.h">
       <Filter>in\Core</Filter>
     </ClInclude>
     <ClInclude Include="ILog.h">
-      <Filter>Out\Log</Filter>
+      <Filter>Share\Log</Filter>
     </ClInclude>
     <ClInclude Include="ELogLevel.h">
-      <Filter>Out\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="SingletonTemplate.h">
-      <Filter>in\abs</Filter>
-    </ClInclude>
-    <ClInclude Include="IItemManagerBase.h">
-      <Filter>in\InteFace</Filter>
+      <Filter>Share\Log</Filter>
     </ClInclude>
     <ClInclude Include="LogMangerSingleton.h">
       <Filter>in\Log</Filter>
@@ -35,13 +17,13 @@
       <Filter>in\Log</Filter>
     </ClInclude>
     <ClInclude Include="LogManager.h">
-      <Filter>Out\Log</Filter>
+      <Filter>Share\Log</Filter>
     </ClInclude>
     <ClInclude Include="IStopWatch.h">
-      <Filter>Out\Time</Filter>
+      <Filter>Share\Time</Filter>
     </ClInclude>
     <ClInclude Include="ITimer.h">
-      <Filter>Out\Time</Filter>
+      <Filter>Share\Time</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>in\Time\Timer</Filter>
@@ -55,37 +37,40 @@
     <ClInclude Include="StopWatchMangerSingleton.h">
       <Filter>in\Time\StopWatch</Filter>
     </ClInclude>
-    <ClInclude Include="IObjectClass.h">
-      <Filter>Out</Filter>
-    </ClInclude>
     <ClInclude Include="TimeManager.h">
-      <Filter>Out\Time</Filter>
+      <Filter>Share\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonTemplate.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ICore.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="IItemManagerBase.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="IObjectClass.h">
+      <Filter>Share\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreEntry.h">
+      <Filter>Share\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreEntryDefine.h">
+      <Filter>Share\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ICoreBuilder.h">
+      <Filter>Share\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Out">
-      <UniqueIdentifier>{e7c380c2-da3f-446f-a582-ea395511386f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="in">
       <UniqueIdentifier>{741aa177-2446-4bc6-9e16-be203922aecc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="in\InteFace">
-      <UniqueIdentifier>{1b912183-6cb2-4611-aa8f-3480c433163b}</UniqueIdentifier>
     </Filter>
     <Filter Include="in\Core">
       <UniqueIdentifier>{97e4abe4-a15d-448d-a4c8-103ae42c62c3}</UniqueIdentifier>
     </Filter>
     <Filter Include="in\Log">
       <UniqueIdentifier>{a00a93cc-6013-429c-bdbe-257e6aca4098}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Out\Log">
-      <UniqueIdentifier>{9295065a-d15a-429c-902c-c1e530884c4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="in\abs">
-      <UniqueIdentifier>{3e85dd23-21af-41fa-b623-39b87071bb21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Out\Time">
-      <UniqueIdentifier>{b5d8b52d-7672-4144-9558-245982fbfa1d}</UniqueIdentifier>
     </Filter>
     <Filter Include="in\Time">
       <UniqueIdentifier>{3e508054-565d-43cc-9a91-70d1369561a2}</UniqueIdentifier>
@@ -95,6 +80,24 @@
     </Filter>
     <Filter Include="in\Time\StopWatch">
       <UniqueIdentifier>{67af8b6e-642d-4293-8b0e-b6b1ec2eef6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{110d4d1f-43ae-4c89-9f55-a5556d4ce4ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frame">
+      <UniqueIdentifier>{73aaac67-892a-4b99-934b-01d31c7f58e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share">
+      <UniqueIdentifier>{42d51c8f-d923-4945-b36e-2855f261c886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Log">
+      <UniqueIdentifier>{9295065a-d15a-429c-902c-c1e530884c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Time">
+      <UniqueIdentifier>{b5d8b52d-7672-4144-9558-245982fbfa1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Core">
+      <UniqueIdentifier>{d0df19be-ba1e-4960-9587-947c4d80ea65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +114,7 @@
       <Filter>in\Log</Filter>
     </ClCompile>
     <ClCompile Include="LogManager.cpp">
-      <Filter>Out\Log</Filter>
+      <Filter>Share\Log</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>in\Time\Timer</Filter>
@@ -126,7 +129,7 @@
       <Filter>in\Time\StopWatch</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
-      <Filter>Out\Time</Filter>
+      <Filter>Share\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

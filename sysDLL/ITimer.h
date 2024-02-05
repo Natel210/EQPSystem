@@ -61,6 +61,7 @@ public:
 	[[nodiscard]] virtual long long DurationSince_Seconds() const = 0;
 	[[nodiscard]] virtual long long DurationSince_Milliseconds() const = 0;
 #pragma endregion
+
 public:
 	/// <summary>
 	/// virtual destructor.
