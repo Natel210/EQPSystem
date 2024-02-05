@@ -2,7 +2,7 @@
 #include <chrono>
 #include "TimerManagerSingleton.h"
 #include "StopWatchMangerSingleton.h"
-
+#include <time.h>
 
 std::shared_ptr<ITimer> TimeManager::CreateTimer(const std::wstring name)
 {
@@ -43,5 +43,10 @@ std::tm TimeManager::GetCurrentSystemTime()
     auto now_c = std::chrono::system_clock::to_time_t(now);
 
     // 변환된 시간을 tm 구조체로 변환합니다.
-    return *std::localtime(&now_c);
+    struct tm timeinfo;
+    time_t rawtime;
+    time(&rawtime);
+    if (localtime_s(&timeinfo, &rawtime) == false)
+        return timeinfo;
+    return std::tm();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreEntryDefine.h"
 #include <string>
+
 /// <summary>
 /// Defines the level of logs.
 /// </summary>

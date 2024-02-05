@@ -4,7 +4,7 @@
 #include "ITimer.h"
 #include "IStopWatch.h"
 #include "CoreEntryDefine.h"
-class TimeManager
+class DLL_API TimeManager
 {
 public:
 	static std::shared_ptr<ITimer> CreateTimer(const std::wstring name);

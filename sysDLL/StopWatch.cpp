@@ -6,7 +6,7 @@ const std::wstring StopWatch::Name() const
     return _name;
 }
 
-void StopWatch::Name(const std::wstring name)
+void StopWatch::Name(const std::wstring& name)
 {
     std::lock_guard<std::mutex> lock(_nameMutex);
     if (_name.compare(name) == 0)
@@ -14,25 +14,84 @@ void StopWatch::Name(const std::wstring name)
     _name = name;
 }
 
-void StopWatch::Start()
+const bool StopWatch::Active() const
 {
-    std::lock_guard<std::mutex> lock(_timeMutex);
-    _startTime = std::chrono::steady_clock::now();
+    std::lock_guard<std::mutex> lock(_activeMutex);
+    return _active;
 }
 
-void StopWatch::SetInterval(const std::chrono::milliseconds& interval)
+void StopWatch::Active(const bool active)
+{
+
+    std::lock_guard<std::mutex> lock(_activeMutex);
+    _active = active;
+}
+
+void StopWatch::Start(const std::chrono::steady_clock::time_point& startTime)
 {
     std::lock_guard<std::mutex> lock(_timeMutex);
+    if (Active() == false)
+        return;
+    _startTime = startTime;
+}
+
+void StopWatch::Start(const std::chrono::milliseconds& interval, const std::chrono::steady_clock::time_point& startTime)
+{
+    std::lock_guard<std::mutex> lock(_timeMutex);
+    if (Active() == false)
+        return;
+    Interval(interval);
+    _startTime = startTime;
+}
+
+void StopWatch::Start(const long long& interval, const std::chrono::steady_clock::time_point& startTime)
+{
+    std::lock_guard<std::mutex> lock(_timeMutex);
+    if (Active() == false)
+        return;
+    Interval(interval);
+    _startTime = startTime;
+}
+
+void StopWatch::End()
+{
+    if (Active() == false)
+        return;
+}
+
+const std::chrono::milliseconds StopWatch::Interval() const
+{
+    std::lock_guard<std::mutex> lock(_intervalMutex);
+    return std::chrono::milliseconds(_interval);
+}
+
+void StopWatch::Interval(const std::chrono::milliseconds& interval)
+{
+    std::lock_guard<std::mutex> lock(_intervalMutex);
+    if (Active() == false)
+        return;
     if (interval < std::chrono::milliseconds(0))
-        _interval = std::chrono::milliseconds(0);
-    else
-        _interval = interval;
+        return;
+    _interval = interval;
+}
+
+void StopWatch::Interval(const long long& interval)
+{
+    std::lock_guard<std::mutex> lock(_intervalMutex);
+    if (Active() == false)
+        return;
+    auto tempInterval = std::chrono::milliseconds(interval);
+    if (tempInterval < std::chrono::milliseconds(0))
+        return;
+    _interval = tempInterval;
 }
 
 bool StopWatch::IsOver() const
 {
     std::lock_guard<std::mutex> lock(_timeMutex);
+    if (Active() == false)
+        return false;
     auto now = std::chrono::steady_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - _startTime);
-    return elapsed >= _interval;
+    return elapsed >= Interval();
 }
