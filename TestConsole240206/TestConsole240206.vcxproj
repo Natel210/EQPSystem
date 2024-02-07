@@ -70,6 +70,26 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -138,18 +158,13 @@
     <ClCompile Include="TestConsole240206.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonShare\CommonShare.vcxproj">
-      <Project>{faaca823-7773-4bc0-a5cf-fcd368734e43}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Plugin\Code\Manager\PluginManager.vcxproj">
+    <ProjectReference Include="..\Plugin\Manager\PluginManager.vcxproj">
       <Project>{928d2680-6200-4ca9-82d2-a879bafd396d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Plugin\Code\MyDllPlugin\MyDllPlugin.vcxproj">
-      <Project>{03780b2c-7460-4ed0-b312-42308b14c97e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Plugin\Code\Share\PluginShare.vcxproj">
-      <Project>{dcaf50d5-dbee-4ec4-b6bb-66ea8d2524e7}</Project>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LogTester.h" />
+    <ClInclude Include="PluginTester.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

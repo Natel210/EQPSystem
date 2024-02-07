@@ -3,33 +3,27 @@
 
 #include <iostream>
 #include "CommonShare/TString.h"
-#include "Plugin/Code/Manager/Manager/PluginManager.h"
-#include "Plugin/Code/MyDllPlugin/MyDllPlugin.h"
+#include "LogTester.h"
+#include "PluginTester.h"
+#ifndef DECLARE_TESTDLL_PLUGIN_ENTRY
+#define DECLARE_TESTDLL_PLUGIN_ENTRY
+#pragma comment(lib, "Plugin/PluginShare.lib")
+#pragma comment(lib, "CommonShare.lib")
+#endif // !DECLARE_TESTDLL_PLUGIN_ENTRY
 using Plugin_Manager = plugin::manager::PluginManager;
 
 int main()
 {
-    Plugin_Manager c;
-    // 정적 라이브러리 플러그인 로드 (예시 경로, 실제 경로에 맞게 수정 필요)
-    // 정적 라이브러리는 동적 로딩이 불가능하므로, 이 부분은 DLL에만 적용됩니다.
-    //manager.loadPlugin("path/to/MyLibPlugin.lib");
+    IMBUE_LANGUAGE("KOR");
 
-    // 동적 라이브러리(DLL) 플러그인 로드
-    TString a = _T("TEST");
-    TString b = _T("../x64/Debug/TestDll_Plugin.dll");
+    PluginTester pluginTester;
+    pluginTester.Test1();
+
+    LogTester logTester;
+    logTester.Test1();
+
+
     //Plugin_Manager::LoadPlugin(_T("TEST"), _T("../x64/Debug/TestDll_Plugin.dll"));
-    Plugin_Manager::LoadPlugin(a, b);
-    auto pl1ori = Plugin_Manager::GetPlugin(a);
-    auto plch1 = plugin::share::CastPlugin<TString>(pl1ori);
-    auto plch2 = plugin::share::CastPlugin<MyDllPlugin>(pl1ori);
-
-    //c.UnloadPlugin(a.c_str());
-    // 
-    //Plugin_anager::loadPlugin("TestDll_Plugin.dll");
-    //Plugin_anager::executePlugins();
-
-
-
 
     exit(0);
     //return 0;

@@ -20,6 +20,33 @@
 #include <locale>
 #endif // !USE_STD_LOCALE
 
+#ifndef USE_STD_FILESYSTEM
+#define USE_STD_FILESYSTEM
+#include <filesystem>
+#endif // !USE_STD_FILESYSTEM
+
+#ifdef _UNICODE
+    #ifndef USE_STD_CWCTYPE
+    #define USE_STD_CWCTYPE
+    #include <cwctype> // std::towupper
+    #endif // !USE_STD_CWCTYPE
+#else
+    #ifndef USE_STD_CCTYPE
+    #define USE_STD_CCTYPE
+    #include <cctype> // std::toupper
+    #endif // !USE_STD_CCTYPE
+#endif // _UNICODE
+
+
+
+
+#ifndef USE_STD_ALGORITHM
+#define USE_STD_ALGORITHM
+#include <algorithm> // std::transform
+#endif // !USE_STD_ALGORITHM
+
+
+
 #ifndef DECLARE_TSTRING
 #define DECLARE_TSTRING
 typedef std::basic_string<TCHAR, std::char_traits<TCHAR>, std::allocator<TCHAR>> TString;
@@ -68,5 +95,57 @@ typedef std::basic_stringstream<TCHAR, std::char_traits<TCHAR>, std::allocator<T
 
 #ifndef DECLARE_IMBUE_LANGUAGE
 #define DECLARE_IMBUE_LANGUAGE
-#define IMBUE_LANGUAGE(strLanguage) TCin.imbue(std::locale(strLanguage)); TCout.imbue(std::locale(strLanguage));
+#define IMBUE_LANGUAGE(strLanguage) TCIN.imbue(std::locale(strLanguage)); TCOUT.imbue(std::locale(strLanguage));
 #endif // !DECLARE_IMBUE_LANGUAGE
+
+#ifndef DECLARE_TO_TSTRING_PATH
+#define DECLARE_TO_TSTRING_PATH
+inline TString TO_TSTRING_PATH(const std::filesystem::path & path)
+{
+#ifdef _UNICODE
+    return path.wstring();
+#else
+    return path.string();
+#endif
+}
+#endif // !DECLARE_TO_TSTRING_PATH
+
+//std::toupper
+
+#ifndef DECLARE_TO_UPPER_TSTRING
+#define DECLARE_TO_UPPER_TSTRING
+#ifdef _UNICODE
+inline TString TO_UPPER_TSTRING(const TString& str)
+{
+    TString tempResultString = str;
+    std::transform(tempResultString.begin(), tempResultString.end(), tempResultString.begin(),
+        [](TCHAR ch) -> TCHAR {
+#ifdef _UNICODE
+        return std::towupper(ch);
+#else
+        return std::toupper(static_cast<unsigned char>(ch));
+#endif
+    });
+    return  tempResultString;
+}
+#endif // _UNICODE
+#endif // !DECLARE_TO_UPPER_TSTRING
+
+#ifndef DECLARE_TO_LOWER_TSTRING
+#define DECLARE_TO_LOWER_TSTRING
+#ifdef _UNICODE
+inline TString TO_LOWER_TSTRING(const TString& str)
+{
+    TString tempResultString = str;
+    std::transform(tempResultString.begin(), tempResultString.end(), tempResultString.begin(),
+        [](TCHAR ch) -> TCHAR {
+#ifdef _UNICODE
+        return std::towlower(ch);
+#else
+        return std::tolower(static_cast<unsigned char>(ch));
+#endif
+    });
+    return  tempResultString;
+}
+#endif // _UNICODE
+#endif // !DECLARE_TO_LOWER_TSTRING
