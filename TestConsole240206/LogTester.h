@@ -28,13 +28,13 @@ public:
         testlog1->Add(_T("A0"));
         testlog1->Add(_T("A1"));
         std::vector<TString> logs;
-        //logs.push_back(_T("A1"));
-        //logs.clear();
-        //logs.push_back(_T("A2"));
-        //logs.push_back(_T("A3"));
-        //logs.push_back(_T("A4"));
-        //testlog1->Level(plugin::log::ELogLevel::Fatal);
-        //testlog1->AddRange(logs);
+        logs.push_back(_T("A1"));
+        logs.clear();
+        logs.push_back(_T("A2"));
+        logs.push_back(_T("A3"));
+        logs.push_back(_T("A4"));
+        testlog1->Level(plugin::log::ELogLevel::Fatal);
+        testlog1->AddRange(logs);
         auto list1 = testlog1->List();
         TCOUT << _T("=============") << std::endl;
         for (auto item : *list1)
