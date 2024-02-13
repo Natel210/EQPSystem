@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Entry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="String\TString.h">
+      <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassTemplate\Managing\IItemManager_Single.h">
+      <Filter>ClassTemplate\Managing</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassTemplate\Managing\SingletonTemplate.h">
+      <Filter>ClassTemplate\Managing</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassTemplate\Plugin\IPlugin.h">
+      <Filter>ClassTemplate\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassTemplate\Object\IObjectClass.h">
+      <Filter>ClassTemplate\Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="String">
+      <UniqueIdentifier>{dc7418dd-fb47-4626-aede-eeb1f4700b49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClassTemplate">
+      <UniqueIdentifier>{a3478be5-a976-4c12-a355-9d252c98fac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClassTemplate\Managing">
+      <UniqueIdentifier>{23d6f7fb-d79f-49c6-8779-af20d7163b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClassTemplate\Object">
+      <UniqueIdentifier>{77088dd1-9b6a-4ca6-89c9-b52d01387f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClassTemplate\Plugin">
+      <UniqueIdentifier>{029c39f5-588d-4d63-a8e2-9d84a4b668d8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

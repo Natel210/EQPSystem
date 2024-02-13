@@ -4,7 +4,7 @@
 #include "Plugin/Share/PluginExportHeader.h"
 #include <iostream>
 
-class PLUGIN_API MyDllPlugin : public plugin::share::IPlugin {
+class EXPORT_API MyDllPlugin : public plugin::share::IPlugin {
 public:
     bool Init() override {
         std::cout << "dll" << std::endl;

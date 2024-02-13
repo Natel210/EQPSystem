@@ -1,10 +1,36 @@
-#include "PluginLoader.h"
-#ifndef DECLARE_PLUGIN_PLUGINLOADER_CPP
-#define DECLARE_PLUGIN_PLUGINLOADER_CPP
+#include "Plugin_Loader.h"
+#ifndef DECLARE_PLUGIN_MANAGER_PLUGIN_LOADER_CPP
+#define DECLARE_PLUGIN_MANAGER_PLUGIN_LOADER_CPP
 
 namespace plugin::manager
 {
-	bool PluginLoader::LoadPlugin(const TString& name, const std::filesystem::path& path)
+	const TString Plugin_Loader::Name() const
+	{
+		std::lock_guard<std::mutex> lock(_nameMutex);
+		return _name;
+	}
+
+	void Plugin_Loader::Name(const TString& name)
+	{
+		std::lock_guard<std::mutex> lock(_nameMutex);
+		if (_name != name)
+			_name = name;
+	}
+
+	const bool Plugin_Loader::Active() const
+	{
+		std::lock_guard<std::mutex> lock(_activeMutex);
+		return _active;
+	}
+
+	void Plugin_Loader::Active(const bool active)
+	{
+		std::lock_guard<std::mutex> lock(_activeMutex);
+		if (_active != active)
+			_active = active;
+	}
+
+	bool Plugin_Loader::LoadPlugin(const TString& name, const std::filesystem::path& path)
 	{
 		// 플러그인 존재 유무
 		_pluginItemsMapMutex.lock();
@@ -25,7 +51,7 @@ namespace plugin::manager
 			std::string funcName;
 			funcName = "Create" + path.stem().string() + "Plugin";
 			// 반드시 존재 해야하는 함수 로딩
-			auto createPluginFunc = (share::IPlugin * (*)())GetProcAddress(moduleHandle, funcName.c_str());
+			auto createPluginFunc = (plugin::IPlugin * (*)())GetProcAddress(moduleHandle, funcName.c_str());
 			if (!createPluginFunc) {
 				TCERR << "Function FunctionName not found in plugin: " << name << std::endl;
 				FreeLibrary(moduleHandle);
@@ -40,10 +66,17 @@ namespace plugin::manager
 				return false;
 
 			// shared_ptr로 관리하되, 삭제자에서 DLL 언로드와 객체 삭제 수행
-			std::shared_ptr<plugin::share::IPlugin> pluginPtr(pluginClass);
+			std::shared_ptr<plugin::IPlugin> pluginPtr(pluginClass);
+
+			// shared_ptr nullptr 검사
+			if (pluginPtr == nullptr)
+				return false;
+
+			// 이름 넣기
+			pluginPtr->Name(name);
 
 			// 성공후 구조체를 만들고 Map 삽입 진행
-			auto pluginItem = std::make_shared<PluginItem>();
+			auto pluginItem = std::make_shared<Plugin_Item>();
 			pluginItem->_module = moduleHandle;
 			pluginItem->_class = pluginPtr;
 			_pluginItemsMapMutex.lock();
@@ -63,7 +96,7 @@ namespace plugin::manager
 
 	}
 
-	//bool PluginLoader::UnloadPlugin(const TString& name)
+	//bool Plugin_Loader::UnloadPlugin(const TString& name)
 	//{
 	//	std::lock_guard<std::mutex> lock(_pluginItemsMapMutex);
 
@@ -100,7 +133,7 @@ namespace plugin::manager
 	//	return result;
 	//}
 
-	std::shared_ptr<share::IPlugin> PluginLoader::GetPlugin(const TString& name)
+	std::shared_ptr<plugin::IPlugin> Plugin_Loader::GetPlugin(const TString& name)
 	{
 		std::lock_guard<std::mutex> lock(_pluginItemsMapMutex);
 		// 존재 유무 확인 후 해당 클래스 전달
@@ -109,12 +142,13 @@ namespace plugin::manager
 		return _pluginItemsDic[name]->_class;
 	}
 
-	bool PluginLoader::CheckExistPlugin(const TString& name)
+	bool Plugin_Loader::CheckExistPlugin(const TString& name)
 	{
 		// Finding을 통해서 확인하고 존재 유무 확인
 		if (_pluginItemsDic.find(name) == _pluginItemsDic.end())
 			return false;
 		return true;
 	}
+
 }
-#endif // !DECLARE_PLUGIN_PLUGINLOADER_CPP
+#endif // !DECLARE_PLUGIN_MANAGER_PLUGIN_LOADER_CPP

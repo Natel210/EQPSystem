@@ -37,69 +37,64 @@
     #endif // !USE_STD_CCTYPE
 #endif // _UNICODE
 
-
-
-
 #ifndef USE_STD_ALGORITHM
 #define USE_STD_ALGORITHM
 #include <algorithm> // std::transform
 #endif // !USE_STD_ALGORITHM
 
-
-
-#ifndef DECLARE_TSTRING
-#define DECLARE_TSTRING
+#ifndef DECLARE_SHARED_LIBRARY_TSTRING
+#define DECLARE_SHARED_LIBRARY_TSTRING
 typedef std::basic_string<TCHAR, std::char_traits<TCHAR>, std::allocator<TCHAR>> TString;
-#endif // !DECLARE_TSTRING
+#endif // !DECLARE_SHARED_LIBRARY_TSTRING
 
-#ifndef DECLARE_TSTRINGSTREAM
-#define DECLARE_TSTRINGSTREAM
+#ifndef DECLARE_SHARED_LIBRARY_TSTRINGSTREAM
+#define DECLARE_SHARED_LIBRARY_TSTRINGSTREAM
 typedef std::basic_stringstream<TCHAR, std::char_traits<TCHAR>, std::allocator<TCHAR>> TStringstream;
-#endif // !DECLARE_TSTRINGSTREAM
+#endif // !DECLARE_SHARED_LIBRARY_TSTRINGSTREAM
 
-#ifndef DECLARE_TO_TSTRING
-#define DECLARE_TO_TSTRING
+#ifndef DECLARE_SHARED_LIBRARY_TO_TSTRING
+#define DECLARE_SHARED_LIBRARY_TO_TSTRING
 #ifdef _UNICODE
 #define TO_TSTRING std::to_wstring
 #else
 #define TO_TSTRING std::to_string
 #endif // _UNICODE
-#endif // !DECLARE_TO_TSTRING
+#endif // !DECLARE_SHARED_LIBRARY_TO_TSTRING
 
-#ifndef DECLARE_TCOUT
-#define DECLARE_TCOUT
+#ifndef DECLARE_SHARED_LIBRARY_TCOUT
+#define DECLARE_SHARED_LIBRARY_TCOUT
 #ifdef _UNICODE
 #define TCOUT std::wcout
 #else
 #define TCOUT std::cout
 #endif // _UNICODE
-#endif // !DECLARE_TCOUT
+#endif // !DECLARE_SHARED_LIBRARY_TCOUT
 
-#ifndef DECLARE_TCIN
-#define DECLARE_TCIN
+#ifndef DECLARE_SHARED_LIBRARY_TCIN
+#define DECLARE_SHARED_LIBRARY_TCIN
 #ifdef _UNICODE
 #define TCIN std::wcin
 #else
 #define TCIN std::cin
 #endif // _UNICODE
-#endif // !DECLARE_TCIN
+#endif // !DECLARE_SHARED_LIBRARY_TCIN
 
-#ifndef DECLARE_TCERR
-#define DECLARE_TCERR
+#ifndef DECLARE_SHARED_LIBRARY_TCERR
+#define DECLARE_SHARED_LIBRARY_TCERR
 #ifdef _UNICODE
 #define TCERR std::wcerr
 #else
 #define TCERR std::cerr
 #endif // _UNICODE
-#endif // !DECLARE_TCERR
+#endif // !DECLARE_SHARED_LIBRARY_TCERR
 
-#ifndef DECLARE_IMBUE_LANGUAGE
-#define DECLARE_IMBUE_LANGUAGE
+#ifndef DECLARE_SHARED_LIBRARY_IMBUE_LANGUAGE
+#define DECLARE_SHARED_LIBRARY_IMBUE_LANGUAGE
 #define IMBUE_LANGUAGE(strLanguage) TCIN.imbue(std::locale(strLanguage)); TCOUT.imbue(std::locale(strLanguage));
-#endif // !DECLARE_IMBUE_LANGUAGE
+#endif // !DECLARE_SHARED_LIBRARY_IMBUE_LANGUAGE
 
-#ifndef DECLARE_TO_TSTRING_PATH
-#define DECLARE_TO_TSTRING_PATH
+#ifndef DECLARE_SHARED_LIBRARY_TO_TSTRING_PATH
+#define DECLARE_SHARED_LIBRARY_TO_TSTRING_PATH
 inline TString TO_TSTRING_PATH(const std::filesystem::path & path)
 {
 #ifdef _UNICODE
@@ -108,12 +103,12 @@ inline TString TO_TSTRING_PATH(const std::filesystem::path & path)
     return path.string();
 #endif
 }
-#endif // !DECLARE_TO_TSTRING_PATH
+#endif // !DECLARE_SHARED_LIBRARY_TO_TSTRING_PATH
 
 //std::toupper
 
-#ifndef DECLARE_TO_UPPER_TSTRING
-#define DECLARE_TO_UPPER_TSTRING
+#ifndef DECLARE_SHARED_LIBRARY_TO_UPPER_TSTRING
+#define DECLARE_SHARED_LIBRARY_TO_UPPER_TSTRING
 #ifdef _UNICODE
 inline TString TO_UPPER_TSTRING(const TString& str)
 {
@@ -129,10 +124,10 @@ inline TString TO_UPPER_TSTRING(const TString& str)
     return  tempResultString;
 }
 #endif // _UNICODE
-#endif // !DECLARE_TO_UPPER_TSTRING
+#endif // !DECLARE_SHARED_LIBRARY_TO_UPPER_TSTRING
 
-#ifndef DECLARE_TO_LOWER_TSTRING
-#define DECLARE_TO_LOWER_TSTRING
+#ifndef DECLARE_SHARED_LIBRARY_TO_LOWER_TSTRING
+#define DECLARE_SHARED_LIBRARY_TO_LOWER_TSTRING
 #ifdef _UNICODE
 inline TString TO_LOWER_TSTRING(const TString& str)
 {
@@ -148,4 +143,4 @@ inline TString TO_LOWER_TSTRING(const TString& str)
     return  tempResultString;
 }
 #endif // _UNICODE
-#endif // !DECLARE_TO_LOWER_TSTRING
+#endif // !DECLARE_SHARED_LIBRARY_TO_LOWER_TSTRING

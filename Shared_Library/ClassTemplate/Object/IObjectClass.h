@@ -1,16 +1,13 @@
 #pragma once
 
-#ifndef USE_COMMON_TSTRING
-#define USE_COMMON_TSTRING
-#include "CommonShare/TString.h"
-#endif // !USE_COMMON_TSTRING
+#ifndef USE_SHARED_LIBRARY_TSTRING
+#define USE_SHARED_LIBRARY_TSTRING
+#include "Shared_Library/String/TString.h"
+#endif // !USE_SHARED_LIBRARY_TSTRING
 
-#ifndef USE_PLUGIN_PLUGINEXPORTHEADER
-#define USE_PLUGIN_PLUGINEXPORTHEADER
-#include "Plugin/Share/PluginExportHeader.h"
-#endif // !USE_PLUGIN_PLUGINEXPORTHEADER
-
-class PLUGIN_API IObjectClass
+#ifndef DECLARE_SHARED_LIBRARY_IOBJECTCLASS
+#define DECLARE_SHARED_LIBRARY_IOBJECTCLASS
+class IObjectClass
 {
 
 #pragma region Name
@@ -50,4 +47,4 @@ public:
 	/// </summary>
 	virtual ~IObjectClass() = default;
 };
-
+#endif // !DECLARE_SHARED_LIBRARY_IOBJECTCLASS

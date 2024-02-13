@@ -2,26 +2,62 @@
 //
 
 #include <iostream>
-#include "CommonShare/TString.h"
-#include "LogTester.h"
+#include "Shared_Library/String/TString.h"
+#include "Plugin/Manager/Manager/Plugin_Manager.h"
+//
+//#ifndef DECLARE_TESTDLL_PLUGIN_ENTRY
+//#define DECLARE_TESTDLL_PLUGIN_ENTRY
+//#pragma comment(lib, "Shared_Library.lib")
+//#endif // !DECLARE_TESTDLL_PLUGIN_ENTRY
+
+using Plugin_Manager = plugin::Plugin_Manager;
+
+/// 설정 디파인
+//#define USE_PLUGIN_TESTER
+#define USE_PLUGIN_LOG_TESTER
+//#define USE_PLUGIN_TIME_TESTER
+
+#pragma region plugin include
+#pragma region plugin
+#ifdef USE_PLUGIN_TESTER
 #include "PluginTester.h"
-#ifndef DECLARE_TESTDLL_PLUGIN_ENTRY
-#define DECLARE_TESTDLL_PLUGIN_ENTRY
-#pragma comment(lib, "Plugin/PluginShare.lib")
-#pragma comment(lib, "CommonShare.lib")
-#endif // !DECLARE_TESTDLL_PLUGIN_ENTRY
-using Plugin_Manager = plugin::manager::PluginManager;
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
+#pragma region log
+#ifdef USE_PLUGIN_LOG_TESTER
+#include "LogTester.h"
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
+#pragma region time
+#ifdef USE_PLUGIN_TIME_TESTER
+#include "TimeTester.h"
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
+#pragma endregion
+
+
 
 int main()
 {
     IMBUE_LANGUAGE("KOR");
-
+#pragma region plugin
+#ifdef USE_PLUGIN_TESTER
     PluginTester pluginTester;
     pluginTester.Test1();
-
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
+#pragma region log
+#ifdef USE_PLUGIN_LOG_TESTER
     LogTester logTester;
     logTester.Test1();
-
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
+#pragma region time
+#ifdef USE_PLUGIN_TIME_TESTER
+    TimeTester timeTester;
+    timeTester.Test1();
+#endif // USE_PLUGIN_TESTER
+#pragma endregion
 
     //Plugin_Manager::LoadPlugin(_T("TEST"), _T("../x64/Debug/TestDll_Plugin.dll"));
 

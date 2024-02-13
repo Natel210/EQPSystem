@@ -158,14 +158,27 @@
     <ClCompile Include="TestConsole240206.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plugin\Manager\PluginManager.vcxproj">
+    <ProjectReference Include="..\Plugin\Manager\Plugin_Manager.vcxproj">
       <Project>{928d2680-6200-4ca9-82d2-a879bafd396d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared_Library\Shared_Library.vcxproj">
+      <Project>{faaca823-7773-4bc0-a5cf-fcd368734e43}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LogTester.h" />
-    <ClInclude Include="PluginTester.h" />
-    <ClInclude Include="TimeTester.h" />
+    <ClInclude Include="PluginTester.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="TimeTester.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

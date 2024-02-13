@@ -1,20 +1,5 @@
 #pragma once
 
-#ifndef USE_PLUGIN_PLUGINEXPORTHEADER
-#define USE_PLUGIN_PLUGINEXPORTHEADER
-#include "Plugin/Share/PluginExportHeader.h"
-#endif // !USE_PLUGIN_PLUGINEXPORTHEADER
-
-#ifndef USE_COMMON_TSTRING
-#define USE_COMMON_TSTRING
-#include "CommonShare/TString.h"
-#endif // !USE_COMMON_TSTRING
-
-#ifndef USE_PLUGIN_IPLUGIN
-#define USE_PLUGIN_IPLUGIN
-#include "Plugin/Share/IPlugin.h"
-#endif // !USE_PLUGIN_IPLUGIN
-
 #ifndef USE_STD_MEMORY
 #define USE_STD_MEMORY
 #include <memory>
@@ -25,11 +10,50 @@
 #include <filesystem>
 #endif // !USE_STD_FILESYSTEM
 
-#ifndef DECLARE_PLUGIN_PLUGINMANAGER_H
-#define DECLARE_PLUGIN_PLUGINMANAGER_H
-namespace plugin::manager
+#ifndef USE_SHARED_LIBRARY_TSTRING
+#define USE_SHARED_LIBRARY_TSTRING
+#include "Shared_Library/String/TString.h"
+#endif // !USE_SHARED_LIBRARY_TSTRING
+
+#ifndef USE_SHARED_LIBRARY_IOBJECTCLASS
+#define USE_SHARED_LIBRARY_IOBJECTCLASS
+#include "Shared_Library/ClassTemplate/Object/IObjectClass.h"
+#endif // !USE_SHARED_LIBRARY_IOBJECTCLASS
+
+#ifndef USE_SHARED_LIBRARY_IPLUGIN
+#define USE_SHARED_LIBRARY_IPLUGIN
+#include "Shared_Library/ClassTemplate/Plugin/IPlugin.h"
+#endif // !USE_SHARED_LIBRARY_IPLUGIN
+
+#ifndef USE_PLUGIN_MANAGER_PLUGIN_MANAGER_EXPORT
+#define USE_PLUGIN_MANAGER_PLUGIN_MANAGER_EXPORT
+#include "Plugin/Manager/Header/Plugin_Manager_Export.h"
+#endif // !USE_PLUGIN_MANAGER_PLUGIN_MANAGER_EXPORT
+
+#ifndef DECLARE_PLUGIN_MANAGER_PLUGIN_MANAGER_H
+#define DECLARE_PLUGIN_MANAGER_PLUGIN_MANAGER_H
+namespace plugin
 {
-    class PLUGIN_API PluginManager {
+    class PLUGIN_MANAGER_API Plugin_Manager
+    {
+#pragma region Name
+
+    public:
+        /// <summary>
+        /// Get
+        /// </summary>
+        static [[nodiscard]] const TString Name();
+
+#pragma region Active
+
+    public:
+        /// <summary>
+        /// Get
+        /// </summary>
+        static [[nodiscard]] const bool Active();
+
+#pragma endregion
+
     public:
 
         /// <summary>
@@ -45,7 +69,7 @@ namespace plugin::manager
         /// </summary>
         /// <param name="name"> -> 플러그인 이름</param>
         /// <returns>없다면 nullptr </returns>
-        static std::shared_ptr<share::IPlugin> GetPlugin(const TString name);
+        static std::shared_ptr<plugin::IPlugin> GetPlugin(const TString name);
 
         ///// <summary>
         ///// 플러그인 사용 해제
@@ -63,7 +87,7 @@ namespace plugin::manager
         /// <param name="plugin"> -> 플러그인</param>
         /// <returns>캐스트에 실패한다면 nullptr</returns>
         template<typename _class>
-        static std::shared_ptr<_class> CastPlugin(std::shared_ptr<plugin::share::IPlugin> plugin)
+        static std::shared_ptr<_class> CastPlugin(std::shared_ptr<plugin::IPlugin> plugin)
         {
             if (plugin == nullptr)
                 return nullptr;
@@ -87,4 +111,4 @@ namespace plugin::manager
         }
     };
 }
-#endif // !DECLARE_PLUGIN_PLUGINMANAGER_H
+#endif // !DECLARE_PLUGIN_MANAGER_PLUGINMANAGER_H

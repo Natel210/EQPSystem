@@ -1,13 +1,13 @@
 #pragma once
 #pragma once
-#include "CommonShare/TString.h"
-#include "Plugin/Manager/Manager/PluginManager.h"
+#include "Shared_Library/String/TString.h"
+#include "Plugin/Manager/Manager/Plugin_Manager.h"
 
-#include "Plugin/Log/Plugin/Time_Plugin.h"
+#include "Plugin/Time/Plugin/Time_Plugin.h"
 
 #pragma comment(lib, "../Bin/Debugx64/Plugin/PluginTime.lib")
 
-using Plugin_Manager = plugin::manager::PluginManager;
+using Plugin_Manager = plugin::manager::Plugin_Manager;
 
 class PluginTester
 {

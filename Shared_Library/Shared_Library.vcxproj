@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dcaf50d5-dbee-4ec4-b6bb-66ea8d2524e7}</ProjectGuid>
-    <RootNamespace>PluginShare</RootNamespace>
+    <ProjectGuid>{faaca823-7773-4bc0-a5cf-fcd368734e43}</ProjectGuid>
+    <RootNamespace>CommonShare</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Shared_Library</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,24 +72,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(SolutionDir)Plugin\Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
-    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(SolutionDir)Plugin\Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
-    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)Plugin\Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
-    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)Plugin\Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
-    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\$(Configuration)$(PlatformTarget)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)$(PlatformTarget)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -155,11 +156,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="IPlugin.h" />
-    <ClInclude Include="PluginExportHeader.h" />
+    <ClCompile Include="Entry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entry.cpp" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClassTemplate\Managing\IItemManager_Single.h" />
+    <ClInclude Include="ClassTemplate\Managing\SingletonTemplate.h" />
+    <ClInclude Include="ClassTemplate\Object\IObjectClass.h" />
+    <ClInclude Include="ClassTemplate\Plugin\IPlugin.h" />
+    <ClInclude Include="String\TString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
