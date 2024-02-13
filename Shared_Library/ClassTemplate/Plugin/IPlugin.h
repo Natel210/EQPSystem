@@ -23,7 +23,7 @@
 #ifndef DECLARE_SHARED_LIBRARY_CREATEPLUGINHEADER
 #define DECLARE_SHARED_LIBRARY_CREATEPLUGINHEADER
 /// 플러그인 전용 생성 함수 해더 부분, 통상적인 함수 선언과 동일하게 사용하면 됩니다.
-#define CreatePluginHeader(projectName, Export_Name) extern "C" plugin::IPlugin* Create##projectName##Plugin()
+#define CreatePluginHeader(projectName) extern "C" plugin::IPlugin* Create##projectName##Plugin()
 #endif // !DECLARE_SHARED_LIBRARY_CREATEPLUGINHEADER
 
 #ifndef DECLARE_SHARED_LIBRARY_CREATEPLUGINHEADER_CPP
@@ -78,13 +78,13 @@ namespace plugin
 
     public:
         virtual bool Init() = 0;
+
+	public:
+		virtual std::shared_ptr<IObjectClass> CreateItem(const TString name) = 0;
+		virtual const bool DeleteItem(const TString name) = 0;
+		virtual std::shared_ptr<IObjectClass> GetIItem(const TString name) = 0;
     public:
         virtual ~IPlugin() = default;
     };
 }
 #endif // !DECLARE_SHARED_LIBRARY_IPLUGIN
-
-
-
-
-
