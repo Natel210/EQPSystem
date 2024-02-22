@@ -1,0 +1,11 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\개인\\소스코드\\myproject\\git\\eqpsystem\\module\\object\\base\\objectclass.ixx",
+        "ProvidedModule": "IObjectClass",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": [
+            "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include\\string"
+        ]
+    }
+}

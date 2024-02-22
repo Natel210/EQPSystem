@@ -110,14 +110,21 @@ namespace plugin
 		/// </summary>
 		virtual int GetDuration_toDay() = 0;
 		/// <summary>
-		/// 
+		/// 경과된 시단위
 		/// </summary>
 		virtual void GetDuration_toHour() = 0;
+		/// <summary>
+		/// 경과된 분단위
+		/// </summary>
 		virtual void GetDuration_toMinute() = 0;
+		/// <summary>
+		/// 경과된 초단위
+		/// </summary>
 		virtual void GetDuration_toSeconds() = 0;
+		/// <summary>
+		/// 경과된 밀리초단위
+		/// </summary>
 		virtual void GetDuration_toMilliseconds() = 0;
-
-
 
 #pragma endregion
 

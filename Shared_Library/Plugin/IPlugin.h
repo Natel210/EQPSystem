@@ -15,6 +15,8 @@
 #include <type_traits>
 #endif // !USE_TYPE_TRAITS
 
+import "ObjectClass";
+
 #ifndef USE_SHARED_LIBRARY_IOBJECTCLASS
 #define USE_SHARED_LIBRARY_IOBJECTCLASS
 #include "Shared_Library/ClassTemplate/Object/IObjectClass.h"

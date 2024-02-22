@@ -62,7 +62,7 @@ namespace plugin
 		virtual ~IClock() = default;
 #pragma endregion
 
-#pragma region 1
+#pragma region Start & End
 #pragma endregion
 
 #pragma region 2

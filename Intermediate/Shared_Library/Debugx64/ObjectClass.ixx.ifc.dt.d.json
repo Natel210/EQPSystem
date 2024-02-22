@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\개인\\소스코드\\myproject\\git\\eqpsystem\\module\\object\\base\\objectclass.ixx",
+        "ProvidedModule": "IObjectClass",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

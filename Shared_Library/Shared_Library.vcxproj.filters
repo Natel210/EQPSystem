@@ -10,9 +10,6 @@
     <ClInclude Include="ClassTemplate\Managing\SingletonTemplate.h">
       <Filter>ClassTemplate\Managing</Filter>
     </ClInclude>
-    <ClInclude Include="ClassTemplate\Object\IObjectClass.h">
-      <Filter>ClassTemplate\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Plugin\Time\ITimer.h">
       <Filter>Plugin\Time</Filter>
     </ClInclude>
