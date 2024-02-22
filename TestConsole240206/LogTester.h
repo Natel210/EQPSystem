@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <map>
-#include "Shared_Library/String/TString.h"
+#include <string>
+#include <iostream>
 #include "Plugin/Manager/Manager/Plugin_Manager.h"
 #include "Plugin/Log/Plugin/Log_Plugin.h"
 
@@ -14,45 +15,53 @@ class LogTester
 public:
 	void Test1()
 	{
-        TCOUT << _T("\r\n=== Log Tester 1 ===") << std::endl;
-        TString a = _T("LOG");
+        std::wcout << L"\r\n=== Log Tester 1 ===" << std::endl;
+        std::wstring a = L"LOG";
         const std::filesystem::path b("../Bin/Debugx64/Plugin/Plugin_Log.dll");
+        
         Plugin_Manager::LoadPlugin(a, b);
         auto pl1ori = Plugin_Manager::GetPlugin(a);
-        auto plch1 = Plugin_Manager::CastPlugin<TString>(pl1ori);
+        auto plch1 = Plugin_Manager::CastPlugin<std::wstring>(pl1ori);
         auto plch3 = Plugin_Manager::CastPlugin<plugin::Log_Plugin>(pl1ori);
-        auto testlog1 = plch3->CreateLog(_T("TEST1"));
+        auto testlog1 = plch3->CreateItem(L"TEST1", plugin::className::ILogClassName);
+        auto testCastingLog = std::dynamic_pointer_cast<plugin::ILog>(testlog1);
+        testCastingLog->Add(L"A0");
+        testCastingLog->Level(plugin::ELogLevel::Debug);
+        testCastingLog->Add(L"A1");
 
-        //plch3->CreateLog(_T("TEST2"));
-        //testlog1->Level(plugin::ELogLevel::Debug);
-        //testlog1->Add(_T("A0"));
-        //testlog1->Add(_T("A1"));
+
+        //plch3->CreateItem(L"TEST2");
         //std::vector<TString> logs;
-        //logs.push_back(_T("A1"));
-        //logs.clear();
-        //logs.push_back(_T("A2"));
-        //logs.push_back(_T("A3"));
-        //logs.push_back(_T("A4"));
-        //testlog1->Level(plugin::ELogLevel::Fatal);
-        //testlog1->AddRange(logs);
-        //auto list1 = testlog1->List();
-        //TCOUT << _T("=============") << std::endl;
-        //for (auto item : *list1)
         //{
-        //    TCOUT << item << std::endl;
+        //    std::vector<std::wstring> logs;
+        //    logs.push_back(L"A1");
+        //    testCastingLog->AddRange(logs);
         //}
-        //auto rut1 = testlog1->Return();
-        //TCOUT << _T("=============") << std::endl;
-        //for (auto item : *rut1)
-        //{
-        //    TCOUT << item << std::endl;
-        //}
-        //auto list2 = testlog1->List();
-        //TCOUT << _T("=============") << std::endl;
-        //for (auto item : *list2)
-        //{
-        //    TCOUT << item << std::endl;
-        //}
+        std::vector<std::wstring> logs;
+        logs.push_back(L"A1");
+        logs.push_back(L"A2\0");
+        logs.push_back(L"A3\0");
+        logs.push_back(L"A4\0");
+        testCastingLog->Level(plugin::ELogLevel::Fatal);
+        testCastingLog->AddRange(logs);
+        auto list1 = testCastingLog->List();
+        std::wcout << L"=============" << std::endl;
+        for (auto item : *list1)
+        {
+            std::wcout << item << std::endl;
+        }
+        auto rut1 = testCastingLog->Return();
+        std::wcout << L"=============" << std::endl;
+        for (auto item : *rut1)
+        {
+            std::wcout << item << std::endl;
+        }
+        auto list2 = testCastingLog->List();
+        std::wcout << L"=============" << std::endl;
+        for (auto item : *list2)
+        {
+            std::wcout << item << std::endl;
+        }
         //// 삭제에 관한 이슈
         //{
         //    auto getpluginascaster = Plugin_Manager::GetPluginAsCaster<plugin::Log_Plugin>(_T("LOG"));

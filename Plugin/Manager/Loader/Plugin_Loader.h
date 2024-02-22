@@ -1,5 +1,16 @@
 #pragma once
 
+#ifndef USE_STD_STRING
+#define USE_STD_STRING
+#include <string>
+#endif // !USE_STD_STRING
+
+#ifndef USE_STD_FILESYSTEM
+#define USE_STD_FILESYSTEM
+#include <filesystem>
+#endif // !USE_STD_FILESYSTEM
+
+
 #ifndef USE_STD_UNORDERED_MAP
 #define USE_STD_UNORDERED_MAP
 #include <unordered_map>
@@ -24,11 +35,6 @@
 #define USE_WINODW_WINDOWS
 #include <Windows.h>
 #endif // !USE_WINODW_WINDOWS
-
-#ifndef USE_SHARED_LIBRARY_TSTRING
-#define USE_SHARED_LIBRARY_TSTRING
-#include "Shared_Library/String/TString.h"
-#endif // !USE_SHARED_LIBRARY_TSTRING
 
 #ifndef USE_SHARED_LIBRARY_IOBJECTCLASS
 #define USE_SHARED_LIBRARY_IOBJECTCLASS
@@ -63,12 +69,12 @@ namespace plugin::manager
 		/// <summary>
 		/// Get
 		/// </summary>
-		[[nodiscard]] const TString Name() const final;
+		[[nodiscard]] const std::wstring Name() const final;
 
 		/// <summary>
 		/// Set
 		/// </summary>
-		void Name(const TString& name);
+		void Name(const std::wstring& name);
 
 #pragma endregion
 
@@ -108,14 +114,14 @@ namespace plugin::manager
 		/// <param name="name"> -> 플러그인 이름</param>
 		/// <param name="path"> -> 플러그인 DLL 경로</param>
 		/// <returns>성공 여부</returns>
-		bool LoadPlugin(const TString& name, const std::filesystem::path& path);
+		bool LoadPlugin(const std::wstring& name, const std::filesystem::path& path);
 
 		/// <summary>
 		/// 로딩된 플러그인 가져옵니다.
 		/// </summary>
 		/// <param name="name"> -> 플러그인 이름</param>
 		/// <returns>없다면 nullptr </returns>
-		std::shared_ptr<IPlugin> GetPlugin(const TString& name);
+		std::shared_ptr<IPlugin> GetPlugin(const std::wstring& name);
 
 		///// <summary>
 		///// 플러그인 사용 해제
@@ -130,10 +136,10 @@ namespace plugin::manager
 		/// </summary>
 		/// <param name="name"> -> 플러그인 이름</param>
 		/// <returns>있다면 true, 없으면 false</returns>
-		bool CheckExistPlugin(const TString& name);
+		bool CheckExistPlugin(const std::wstring& name);
 
 	private:
-		TString _name = _T("Plugin Manager");
+		std::wstring _name = L"Plugin Manager";
 		bool _active = true;
 		mutable std::mutex _nameMutex;
 		mutable std::mutex _activeMutex;
@@ -143,7 +149,7 @@ namespace plugin::manager
 		/// 플러그인 정보를 담기위한 Map 인스턴스<para/>
 		/// pair -> [플러그인 이름](Tstring), [플러그인 구조체](Plugin_Item)<para/>
 		/// </summary>
-		std::unordered_map<TString, std::shared_ptr<Plugin_Item>> _pluginItemsDic;
+		std::unordered_map<std::wstring, std::shared_ptr<Plugin_Item>> _pluginItemsDic;
 
 		/// <summary>
 		/// Map 인스턴스를 멀티 스레드 환경 구현을 위한 뮤텍스

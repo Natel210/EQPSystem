@@ -2,15 +2,21 @@
 #ifndef DECLARE_PLUGIN_MANAGER_PLUGIN_LOADER_CPP
 #define DECLARE_PLUGIN_MANAGER_PLUGIN_LOADER_CPP
 
+#ifndef USE_STD_IOSTREAM
+#define USE_STD_IOSTREAM
+#include <iostream>
+#endif // !USE_STD_IOSTREAM
+
+
 namespace plugin::manager
 {
-	const TString Plugin_Loader::Name() const
+	const std::wstring Plugin_Loader::Name() const
 	{
 		std::lock_guard<std::mutex> lock(_nameMutex);
 		return _name;
 	}
 
-	void Plugin_Loader::Name(const TString& name)
+	void Plugin_Loader::Name(const std::wstring& name)
 	{
 		std::lock_guard<std::mutex> lock(_nameMutex);
 		if (_name != name)
@@ -30,7 +36,7 @@ namespace plugin::manager
 			_active = active;
 	}
 
-	bool Plugin_Loader::LoadPlugin(const TString& name, const std::filesystem::path& path)
+	bool Plugin_Loader::LoadPlugin(const std::wstring& name, const std::filesystem::path& path)
 	{
 		// 플러그인 존재 유무
 		_pluginItemsMapMutex.lock();
@@ -43,9 +49,9 @@ namespace plugin::manager
 		try
 		{
 			// DLL 로딩
-			HMODULE moduleHandle = LoadLibrary(TO_TSTRING_PATH(path).c_str());
+			HMODULE moduleHandle = LoadLibraryW(path.wstring().c_str());
 			if (!moduleHandle) {
-				TCERR << "Failed to load plugin: " << name << ". DLL not found: " << path << std::endl;
+				std::wcerr << L"Failed to load plugin: " << name << L". DLL not found: " << path << std::endl;
 				return false;
 			}
 			std::string funcName;
@@ -53,7 +59,7 @@ namespace plugin::manager
 			// 반드시 존재 해야하는 함수 로딩
 			auto createPluginFunc = (plugin::IPlugin * (*)())GetProcAddress(moduleHandle, funcName.c_str());
 			if (!createPluginFunc) {
-				TCERR << "Function FunctionName not found in plugin: " << name << std::endl;
+				std::wcerr << L"Function FunctionName not found in plugin: " << name << std::endl;
 				FreeLibrary(moduleHandle);
 				return false;
 			}
@@ -90,7 +96,7 @@ namespace plugin::manager
 		}
 		catch (const std::exception& e)
 		{
-			TCERR << "Plugin loading error: " << e.what() << std::endl;
+			std::wcerr << L"Plugin loading error: " << e.what() << std::endl;
 			return false; // 예외 발생 시 false 반환
 		}
 
@@ -133,7 +139,7 @@ namespace plugin::manager
 	//	return result;
 	//}
 
-	std::shared_ptr<plugin::IPlugin> Plugin_Loader::GetPlugin(const TString& name)
+	std::shared_ptr<plugin::IPlugin> Plugin_Loader::GetPlugin(const std::wstring& name)
 	{
 		std::lock_guard<std::mutex> lock(_pluginItemsMapMutex);
 		// 존재 유무 확인 후 해당 클래스 전달
@@ -142,7 +148,7 @@ namespace plugin::manager
 		return _pluginItemsDic[name]->_class;
 	}
 
-	bool Plugin_Loader::CheckExistPlugin(const TString& name)
+	bool Plugin_Loader::CheckExistPlugin(const std::wstring& name)
 	{
 		// Finding을 통해서 확인하고 존재 유무 확인
 		if (_pluginItemsDic.find(name) == _pluginItemsDic.end())

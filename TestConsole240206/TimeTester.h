@@ -19,7 +19,7 @@ public:
         const std::filesystem::path tempPath("../Bin/Debugx64/Plugin/PluginTime.dll");
         Plugin_Manager::LoadPlugin(tempName, tempPath);
         auto plch3 = Plugin_Manager::GetPluginAsCaster<plugin::Time_Plugin>(tempName);
-        //auto testlog1 = plch3->CreateLog(_T("TEST1"));
+        //auto testlog1 = plch3->CreateItem(_T("TEST1"));
 	}
 public:
 	PluginTester() = default;

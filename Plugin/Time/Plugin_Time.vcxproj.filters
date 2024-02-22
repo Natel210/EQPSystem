@@ -16,6 +16,9 @@
     <Filter Include="Plugin">
       <UniqueIdentifier>{85dc41b4-b526-4938-89a5-fdc508f6b1c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{ef42491f-99b5-43d4-a163-440c594eed65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

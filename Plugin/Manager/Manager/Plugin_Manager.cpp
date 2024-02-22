@@ -9,7 +9,7 @@
 #define DECLARE_PLUGIN_MANAGER_PLUGIN_MANAGER_CPP
 namespace plugin
 {
-	const TString Plugin_Manager::Name()
+	const std::wstring Plugin_Manager::Name()
 	{
 		return manager::Plugin_Loader::Instance().Name();
 	}
@@ -19,14 +19,14 @@ namespace plugin
 		return manager::Plugin_Loader::Instance().Active();
 	}
 
-	bool Plugin_Manager::LoadPlugin(const TString name, const std::filesystem::path& path)
+	bool Plugin_Manager::LoadPlugin(const std::wstring name, const std::filesystem::path& path)
 	{
 		if (Active() == false)
 			return false;
 		return manager::Plugin_Loader::Instance().LoadPlugin(name, path);
 	}
 
-	std::shared_ptr<plugin::IPlugin> Plugin_Manager::GetPlugin(const TString name)
+	std::shared_ptr<plugin::IPlugin> Plugin_Manager::GetPlugin(const std::wstring name)
 	{
 		if (Active() == false)
 			return nullptr;

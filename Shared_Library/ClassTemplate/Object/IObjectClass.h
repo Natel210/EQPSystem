@@ -1,9 +1,9 @@
 #pragma once
 
-#ifndef USE_SHARED_LIBRARY_TSTRING
-#define USE_SHARED_LIBRARY_TSTRING
-#include "Shared_Library/String/TString.h"
-#endif // !USE_SHARED_LIBRARY_TSTRING
+#ifndef USE_STD_STRING
+#define USE_STD_STRING
+#include <string>
+#endif // !USE_STD_STRING
 
 #ifndef DECLARE_SHARED_LIBRARY_IOBJECTCLASS
 #define DECLARE_SHARED_LIBRARY_IOBJECTCLASS
@@ -16,12 +16,12 @@ public:
 	/// <summary>
 	/// Get
 	/// </summary>
-	virtual [[nodiscard]] const TString Name() const = 0;
+	virtual [[nodiscard]] const std::wstring Name() const = 0;
 
 	/// <summary>
 	/// Set
 	/// </summary>
-	virtual void Name(const TString& name) = 0;
+	virtual void Name(const std::wstring& name) = 0;
 
 #pragma endregion
 

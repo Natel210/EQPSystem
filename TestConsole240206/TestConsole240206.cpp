@@ -2,12 +2,17 @@
 //
 
 #include <iostream>
-#include "Shared_Library/String/TString.h"
+#include <string>
 #include "Plugin/Manager/Manager/Plugin_Manager.h"
 //
 //#ifndef DECLARE_TESTDLL_PLUGIN_ENTRY
 //#define DECLARE_TESTDLL_PLUGIN_ENTRY
 //#pragma comment(lib, "Shared_Library.lib")
+//#endif // !DECLARE_TESTDLL_PLUGIN_ENTRY
+
+//#ifndef DECLARE_TESTDLL_PLUGIN_ENTRY
+//#define DECLARE_TESTDLL_PLUGIN_ENTRY
+#pragma comment(lib, "../Bin/Debugx64/Plugin_Manager.lib")
 //#endif // !DECLARE_TESTDLL_PLUGIN_ENTRY
 
 using Plugin_Manager = plugin::Plugin_Manager;
@@ -39,7 +44,11 @@ using Plugin_Manager = plugin::Plugin_Manager;
 
 int main()
 {
-    IMBUE_LANGUAGE("KOR");
+    std::cin.imbue(std::locale("ko_KR.UTF-8"));
+    std::cout.imbue(std::locale("ko_KR.UTF-8"));
+    std::wcin.imbue(std::locale("ko_KR.UTF-8"));
+    std::wcout.imbue(std::locale("ko_KR.UTF-8"));
+    //IMBUE_LANGUAGE("ko_KR.UTF-8");
 #pragma region plugin
 #ifdef USE_PLUGIN_TESTER
     PluginTester pluginTester;

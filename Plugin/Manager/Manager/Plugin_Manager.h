@@ -1,5 +1,10 @@
 #pragma once
 
+#ifndef USE_STD_STRING
+#define USE_STD_STRING
+#include <string>
+#endif // !USE_STD_STRING
+
 #ifndef USE_STD_MEMORY
 #define USE_STD_MEMORY
 #include <memory>
@@ -10,11 +15,6 @@
 #include <filesystem>
 #endif // !USE_STD_FILESYSTEM
 
-#ifndef USE_SHARED_LIBRARY_TSTRING
-#define USE_SHARED_LIBRARY_TSTRING
-#include "Shared_Library/String/TString.h"
-#endif // !USE_SHARED_LIBRARY_TSTRING
-
 #ifndef USE_SHARED_LIBRARY_IOBJECTCLASS
 #define USE_SHARED_LIBRARY_IOBJECTCLASS
 #include "Shared_Library/ClassTemplate/Object/IObjectClass.h"
@@ -22,7 +22,7 @@
 
 #ifndef USE_SHARED_LIBRARY_IPLUGIN
 #define USE_SHARED_LIBRARY_IPLUGIN
-#include "Shared_Library/ClassTemplate/Plugin/IPlugin.h"
+#include "Shared_Library/Plugin/IPlugin.h"
 #endif // !USE_SHARED_LIBRARY_IPLUGIN
 
 #ifndef USE_PLUGIN_MANAGER_PLUGIN_MANAGER_EXPORT
@@ -42,7 +42,7 @@ namespace plugin
         /// <summary>
         /// Get
         /// </summary>
-        static [[nodiscard]] const TString Name();
+        static [[nodiscard]] const std::wstring Name();
 
 #pragma region Active
 
@@ -62,14 +62,14 @@ namespace plugin
         /// <param name="name"> -> 플러그인 이름</param>
         /// <param name="path"> -> 플러그인 DLL 경로</param>
         /// <returns>성공 여부</returns>
-        static bool LoadPlugin(const TString name, const std::filesystem::path& path);
+        static bool LoadPlugin(const std::wstring name, const std::filesystem::path& path);
 
         /// <summary>
         /// 로딩된 플러그인 가져옵니다.
         /// </summary>
         /// <param name="name"> -> 플러그인 이름</param>
         /// <returns>없다면 nullptr </returns>
-        static std::shared_ptr<plugin::IPlugin> GetPlugin(const TString name);
+        static std::shared_ptr<plugin::IPlugin> GetPlugin(const std::wstring name);
 
         ///// <summary>
         ///// 플러그인 사용 해제
@@ -105,7 +105,7 @@ namespace plugin
         /// <param name="name"> -> 플러그인 이름</param>
         /// <returns>캐스트에 실패한다면 nullptr</returns>
         template<typename _class>
-        static std::shared_ptr<_class> GetPluginAsCaster(const TString name)
+        static std::shared_ptr<_class> GetPluginAsCaster(const std::wstring name)
         {
             return CastPlugin<_class>(GetPlugin(name));
         }
