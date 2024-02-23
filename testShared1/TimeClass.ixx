@@ -131,6 +131,7 @@ namespace time_class
 		}
 		virtual void End()
 		{
+			LastTime(std::chrono::steady_clock::now());
 			RunTime(false);
 		}
 	public:
@@ -169,9 +170,11 @@ namespace time_class
 	private:
 		std::chrono::milliseconds GetDuration(std::chrono::steady_clock::time_point nowTime = std::chrono::steady_clock::now()) const
 		{
-			if (RunTime() == false)
-				return std::chrono::milliseconds(0);
-			auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(nowTime - StartTime());
+			std::chrono::milliseconds duration = std::chrono::milliseconds(0);
+			if (RunTime() == true)
+				duration = std::chrono::duration_cast<std::chrono::milliseconds>(nowTime - StartTime());
+			else
+				duration = std::chrono::duration_cast<std::chrono::milliseconds>(nowTime - LastTime());
 			return duration;
 		}
 	public:
@@ -198,6 +201,17 @@ namespace time_class
 			std::lock_guard<std::mutex> lock(_startTimeMutex);
 			_startTime = startTime;
 		}
+	private:
+		inline void LastTime(std::chrono::steady_clock::time_point lastTime)
+		{
+			std::lock_guard<std::mutex> lock(_lastTimeMutex);
+			_lastTime = lastTime;
+		}
+		inline const std::chrono::steady_clock::time_point LastTime()
+		{
+			std::lock_guard<std::mutex> lock(_lastTimeMutex);
+			return _lastTime;
+		}
 	public:
 		StopWatch(std::wstring name) : object_class::AObjectClass(name, _classType) {}
 		virtual ~StopWatch() = default;
@@ -206,6 +220,8 @@ namespace time_class
 		mutable std::mutex _runTimeMutex;
 		std::chrono::steady_clock::time_point _startTime;
 		mutable std::mutex _startTimeMutex;
+		std::chrono::steady_clock::time_point _lastTime;
+		mutable std::mutex _lastTimeMutex;
 	public:
 		static constexpr wchar_t _classType[] = L"StopWatch";
 	};
@@ -293,6 +309,7 @@ namespace time_class
 			std::lock_guard<std::mutex> lock(_startTimeMutex);
 			_startTime = startTime;
 		}
+
 	public:
 		Timer(std::wstring name) : object_class::AObjectClass(name, _classType) {}
 		virtual ~Timer() = default;
@@ -398,11 +415,6 @@ namespace time_class
 			{
 				object_class::KillObject(name);
 			}
-		public:
-			inline bool GetCurrentClock()
-			{
-				return true;
-			}
 		};
 	}
 
@@ -441,9 +453,5 @@ namespace time_class
 	export void KillTimer(const std::wstring& name)
 	{
 		internal_class::TimeClass_Manager::Instance().KillTimer(name);
-	}
-	export bool GetCurrentClock()
-	{
-		return  internal_class::TimeClass_Manager::Instance().GetCurrentClock();
 	}
 }
