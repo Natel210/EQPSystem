@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="base">
+      <UniqueIdentifier>{29deb84a-fa2a-4efe-af27-2af952846514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\backend">
+      <UniqueIdentifier>{02e1f610-7217-413d-9cc5-30ab3cae2497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="actor">
+      <UniqueIdentifier>{73a2aa30-4814-4440-bc20-7fdd2b4c1848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="componet">
+      <UniqueIdentifier>{74653a1e-8b6b-4d7e-bbfb-db570dd533bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="actor\backend">
+      <UniqueIdentifier>{de1d2e04-f717-42fb-a5c9-de7288e4563b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="componet\backend">
+      <UniqueIdentifier>{da0847cc-70e7-49de-a752-8d3567a07e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="definition">
+      <UniqueIdentifier>{50c7a450-00fa-4a36-8b7d-4fbc4ad4ebea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dream.cpp" />
+    <ClCompile Include="base\backend\DreamActorBase.cpp">
+      <Filter>base\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="base\backend\DreamComponentBase.cpp">
+      <Filter>base\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="base\backend\DreamObjectBase.cpp">
+      <Filter>base\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="actor\backend\DreamLogActor.cpp">
+      <Filter>actor\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="component\backend\DreamLogComponet.cpp">
+      <Filter>componet\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="component\backend\DreamIntervalCounterComponent.cpp">
+      <Filter>componet\backend</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dream.h" />
+    <ClInclude Include="base\DreamActorBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\DreamComponentBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\DreamObjectBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="actor\DreamLogActor.h">
+      <Filter>actor</Filter>
+    </ClInclude>
+    <ClInclude Include="component\DreamLogComponet.h">
+      <Filter>componet</Filter>
+    </ClInclude>
+    <ClInclude Include="definition\DreamLogEnum.h">
+      <Filter>definition</Filter>
+    </ClInclude>
+    <ClInclude Include="definition\DreamHeader.h">
+      <Filter>definition</Filter>
+    </ClInclude>
+    <ClInclude Include="definition\DreamIProgress.h">
+      <Filter>definition</Filter>
+    </ClInclude>
+    <ClInclude Include="definition\DreamILogic.h">
+      <Filter>definition</Filter>
+    </ClInclude>
+    <ClInclude Include="component\DreamIntervalCounterComponent.h">
+      <Filter>componet</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
