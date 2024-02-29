@@ -143,6 +143,7 @@
     <ClCompile Include="component\backend\DreamIntervalCounterComponent.cpp" />
     <ClCompile Include="component\backend\DreamLogComponet.cpp" />
     <ClCompile Include="dream.cpp" />
+    <ClCompile Include="DreamStopWatchComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor\DreamLogActor.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="definition\DreamIProgress.h" />
     <ClInclude Include="definition\DreamLogEnum.h" />
     <ClInclude Include="dream.h" />
+    <ClInclude Include="DreamStopWatchComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

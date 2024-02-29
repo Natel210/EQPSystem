@@ -56,7 +56,6 @@ namespace time_class
 		{
 			RunTime(false);
 		}
-
 		inline int Counter() const
 		{
 			if (RunTime() == false)
@@ -110,7 +109,7 @@ namespace time_class
 	};
 
 	/// <summary>
-	/// Æ¯Á¤ ½Ã°£À¸·Î ºÎÅÍ ¾ó¸¸Å­ Èê·¶´ÂÁö¿¡ ´ëÇØ¼­ ¾Ë·ÁÁÖ´Â Å¬·¡½º
+	/// Æ¯ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½ê·¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ë·ï¿½ï¿½Ö´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	export class StopWatch : public object_class::AObjectClass
 	{
@@ -227,7 +226,7 @@ namespace time_class
 	};
 
 	/// <summary>
-	/// Æ¯Á¤ ½Ã°£ Áö³²¿¡ À¯¹«¸¦ ¾Ë·ÁÁÖ´Â Å¬·¡½º
+	/// Æ¯ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½Ö´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	export class Timer : public object_class::AObjectClass
 	{

@@ -7,7 +7,7 @@ namespace dream::componet
 {
 #ifndef DECLARATION_DREAMINTERVALCOUNTERCOMPONENT
 #define DECLARATION_DREAMINTERVALCOUNTERCOMPONENT
-	class DreamIntervalCounterComponent : public base::DreamComponentBase
+	class DREAM_API DreamIntervalCounterComponent : public base::DreamComponentBase
 	{
 	public:
 		bool Initialize() final;
@@ -24,6 +24,7 @@ namespace dream::componet
 		virtual const bool RunTime() const final;
 		virtual const std::chrono::steady_clock::time_point StartTime() const final;
 	public:
+
 		virtual void Start(const std::chrono::steady_clock::time_point& startTime = std::chrono::steady_clock::now()) final;
 		virtual void Start(const std::chrono::milliseconds& interval, const std::chrono::steady_clock::time_point& startTime = std::chrono::steady_clock::now()) final;
 		virtual void Start(const long long& interval, const std::chrono::steady_clock::time_point& startTime = std::chrono::steady_clock::now()) final;

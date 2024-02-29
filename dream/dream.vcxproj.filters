@@ -43,6 +43,7 @@
     <ClCompile Include="component\backend\DreamIntervalCounterComponent.cpp">
       <Filter>componet\backend</Filter>
     </ClCompile>
+    <ClCompile Include="DreamStopWatchComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dream.h" />
@@ -76,5 +77,6 @@
     <ClInclude Include="component\DreamIntervalCounterComponent.h">
       <Filter>componet</Filter>
     </ClInclude>
+    <ClInclude Include="DreamStopWatchComponent.h" />
   </ItemGroup>
 </Project>

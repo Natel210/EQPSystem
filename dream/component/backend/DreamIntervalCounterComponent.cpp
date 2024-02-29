@@ -3,6 +3,7 @@ namespace dream::componet
 {
 #ifndef DEFINITION_DREAMINTERVALCOUNTERCOMPONENT
 #define DEFINITION_DREAMINTERVALCOUNTERCOMPONENT
+
     bool DreamIntervalCounterComponent::Initialize()
     {
         bool result = dream::base::DreamComponentBase::Initialize();
