@@ -14,5 +14,6 @@ private:
 	Core(Core&&) noexcept = delete;
 private:
 	MutexValue<bool> _run = true;
+
 };
 
