@@ -13,11 +13,12 @@ namespace dream { namespace componet {
 #endif // _HAS_CXX17
 #pragma endregion
 #pragma region Avoid duplication
-#ifndef DECLARATION_DREAMINTERVALCOUNTERCOMPONENT
-#define DECLARATION_DREAMINTERVALCOUNTERCOMPONENT
+#ifndef DECLARATION_DREAMTIMERCOMPONET
+#define DECLARATION_DREAMTIMERCOMPONET
 #pragma endregion
 
-class DREAM_API DreamIntervalCounterComponent : public base::DreamComponentBase
+/// <summary> 특정 기간을 오버했는지 </summary>
+class DREAM_API DreamTimerComponet : public base::DreamComponentBase
 {
 public:
 	bool Initialize() final;
@@ -25,7 +26,7 @@ public:
 protected:
 	_NODISCARD std::shared_ptr<dream::base::DreamObjectBase> Clone_ToObject() const override;
 public:
-	_NODISCARD std::shared_ptr<DreamIntervalCounterComponent> Clone();
+	_NODISCARD std::shared_ptr<DreamTimerComponet> Clone();
 public:
 	virtual _NODISCARD const bool RunTime() const final;
 public:
@@ -39,11 +40,12 @@ public:
 	virtual void Start(const std::chrono::milliseconds& interval, const std::chrono::steady_clock::time_point& startTime = std::chrono::steady_clock::now()) final;
 	virtual void Start(const long long& interval, const std::chrono::steady_clock::time_point& startTime = std::chrono::steady_clock::now()) final;
 	virtual void End() final;
-	virtual const int Counter() const final;
+	virtual _NODISCARD bool IsOver() final;
+	virtual _NODISCARD const std::chrono::milliseconds RemainTime() final;
 public:
-	DreamIntervalCounterComponent(const std::string& name, const std::string& classType = "DreamIntervalCounterComponent");
-	virtual ~DreamIntervalCounterComponent() = default;
-	DreamIntervalCounterComponent(const DreamIntervalCounterComponent& other);
+	DreamTimerComponet(const std::string& name, const std::string& classType = "DreamTimerComponet");
+	virtual ~DreamTimerComponet() = default;
+	DreamTimerComponet(const DreamTimerComponet& other);
 private:
 	MutexValue<bool> _runTime = false;
 	MutexValue<std::chrono::steady_clock::time_point> _startTime = std::chrono::steady_clock::now();
@@ -51,7 +53,7 @@ private:
 };
 
 #pragma region Avoid duplication
-#endif // !DECLARATION_DREAMINTERVALCOUNTERCOMPONENT
+#endif //!DECLARATION_DREAMTIMERCOMPONET
 #pragma endregion
 #pragma region Namespace
 #if _HAS_CXX17
@@ -60,4 +62,3 @@ private:
 }}
 #endif // _HAS_CXX17
 #pragma endregion
-

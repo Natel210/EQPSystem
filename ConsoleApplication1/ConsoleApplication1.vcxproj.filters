@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ConsoleApplication1.cpp" />
+    <ClCompile Include="ObjectClass.cpp" />
+    <ClCompile Include="Core.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="object_frame">
+      <UniqueIdentifier>{2caefeb3-c8e3-4516-8e80-e95124a23551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object_frame\backend">
+      <UniqueIdentifier>{3a2da6ff-8115-4fe8-83a1-0ed9c07de92b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ObjectClass.h" />
+    <ClInclude Include="MutexValue.h" />
+    <ClInclude Include="Core.h" />
+  </ItemGroup>
+</Project>

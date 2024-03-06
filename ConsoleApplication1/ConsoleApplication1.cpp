@@ -1,20 +1,11 @@
-﻿// Shared4.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// ConsoleApplication1.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-#include <conio.h>
+
 #include <iostream>
-#include <cstdint> // std::uintptr_t 정의를 위해 필요
-#include <memory>
-#include "dream/dreamCheckFuncs.h"
 
 int main()
 {
-    //CheckCreation();
-    //CheckLog();
-    //CheckIntevalCounter();
-    //CheckStopWatch();
-    //CheckTimer();
-    //CheckAlarm();
-    exit(0);
+    std::cout << "Hello World!\n";
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

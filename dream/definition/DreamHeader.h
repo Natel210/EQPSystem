@@ -9,3 +9,16 @@
 #define DREAM_API
 #endif
 #endif // !DECLARE_DREAM_API
+
+//include runtime header call defines 
+#include <vcruntime.h>
+
+// not nodiscard defined.
+#ifndef _NODISCARD
+#if _HAS_CXX17
+#define DREAM_NODISCARD [[nodiscard]]
+#else 
+#define _NODISCARD
+#endif //_HAS_CXX17
+#endif // !_NODISCARD
+
